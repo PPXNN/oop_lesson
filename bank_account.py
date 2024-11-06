@@ -12,7 +12,7 @@ class AccountDB:
     def delete_account(self, num):
         index = self.search_account_db(num)
         if index != -1:
-            print("Deleting account:", self.account_database[index]["account_number"])
+            print("Deleting account:", self.account_database[index].account_number)
             del self.account_database[index]
         else:
             print(num, "invalid account number; nothing to be deleted.")
@@ -43,6 +43,8 @@ class AccountDB:
         account = self.search_public(account_num)
         if account:
             print(f"Showing details for {account.account_number}: {account}")
+        else:
+            print("Not found")
 
     def __str__(self):
         s = ''
@@ -87,6 +89,7 @@ my_db.deposit('0003', 50)
 my_db.show_account('0003')
 my_db.withdraw("0003", 25)
 my_db.show_account('0003')
+my_db.delete_account('0003')
 my_db.show_account('0003')
 my_db.deposit('0003', 50)
 my_db.withdraw("0001", 6000)
